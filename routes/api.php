@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ColumnController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,25 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// CRUD:
+// Route::get('/columns', 'ColumnController@index');
+// Route::post('/columns', 'ColumnController@store');
+// Route::put('/columns', 'ColumnController@update');
+// Route::delete('/columns', 'ColumnController@destroy');
 
-// 1. Get all columns
-// 2. Create a column
-// 3. Update a column ?
-// 4. Delete a column
-
-Route::get('column');
-
-// Create:
-// 1. create database and migrations
-// 2. create model
-// 2.5 create a service? Eloquent ORM?
-// 3. create controller to go get info from db
-// 4. return that info
-
-Route::get('testing-api', function() {
-    return ['php' => 'sucks'];
-});
+Route::get('/columns', 'App\Http\Controllers\ColumnController@index');
+Route::post('/columns', 'App\Http\Controllers\ColumnController@store');
+Route::put('/columns/{id}', 'App\Http\Controllers\ColumnController@update');
+Route::delete('/columns/{id}', 'App\Http\Controllers\ColumnController@destroy');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

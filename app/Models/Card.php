@@ -12,4 +12,9 @@ class Card extends Model
         'description'
     ];
     use HasFactory;
+
+    public function column()
+    {
+        return $this->belongsTo(Column::class);
+    }
 }

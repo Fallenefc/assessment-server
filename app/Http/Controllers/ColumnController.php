@@ -15,7 +15,7 @@ class ColumnController extends Controller
     public function index()
     {
         // Get all posts
-        return Column::all();
+        return Column::find(1);
     }
 
     /**

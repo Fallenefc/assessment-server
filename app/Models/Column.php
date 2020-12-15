@@ -11,4 +11,9 @@ class Column extends Model
         'title'
     ];
     use HasFactory;
+
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
+    }
 }

@@ -36,6 +36,7 @@ Route::middleware(['cors'])->group(function(){
         Spatie\DbDumper\Databases\PostgreSql::create()
             ->setDbName(env('DB_DATABASE'))
             ->setUserName(env('DB_USERNAME'))
+            ->setHost(env('DB_HOST'))
             ->setPassword(env('DB_PASSWORD'))
             ->dumpToFile('dump.sql');
     });

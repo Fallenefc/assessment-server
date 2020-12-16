@@ -23,12 +23,21 @@ class CardController extends Controller
     {
         $columns = Column::all();
         foreach ($columns as $column) {
-            // $column->cards = Card::where('column_id', 1);
             $id = $column->id;
             $column->cards = Card::where('column_id', $id)->get();
-            // $column->cards = Card::all();
-            // $column->$cards = Card::where([['column_id','=',$id]])->first();
         }
         return $columns;
+    }
+
+    public function update(Request $request, $id)
+    {
+        $column = Card::find($id);
+        $column ->update($request->all());
+        return $column;
+    }
+
+    public function destroy($id)
+    {
+        return Column::destroy($id);
     }
 }

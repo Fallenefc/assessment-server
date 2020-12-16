@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ColumnController;
+use App\Http\Controllers\CardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,8 @@ Route::get('/columns', 'App\Http\Controllers\ColumnController@index');
 Route::post('/columns', 'App\Http\Controllers\ColumnController@store');
 Route::put('/columns/{id}', 'App\Http\Controllers\ColumnController@update');
 Route::delete('/columns/{id}', 'App\Http\Controllers\ColumnController@destroy');
+
+Route::post('/cards/{id}', 'App\Http\Controllers\CardController@store');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

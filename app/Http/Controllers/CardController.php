@@ -36,9 +36,13 @@ class CardController extends Controller
 
         $id = $request->column_id;
 
+        if(!$id) {
+            return $card;
+        }
+
         $column = Column::find($id);
         $column->cards()->save($card);
-        
+            
         return $card;
     }
 

@@ -31,9 +31,15 @@ class CardController extends Controller
 
     public function update(Request $request, $id)
     {
-        $column = Card::find($id);
-        $column ->update($request->all());
-        return $column;
+        $card = Card::find($id);
+        $card ->update($request->all());
+
+        $id = $request->column_id;
+
+        $column = Column::find($id);
+        $column->cards()->save($card);
+        
+        return $card;
     }
 
     public function destroy($id)

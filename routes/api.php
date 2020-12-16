@@ -27,6 +27,7 @@ Route::put('/columns/{id}', 'App\Http\Controllers\ColumnController@update');
 Route::delete('/columns/{id}', 'App\Http\Controllers\ColumnController@destroy');
 
 Route::post('/cards/{id}', 'App\Http\Controllers\CardController@store');
+Route::get('/cards', 'App\Http\Controllers\CardController@index');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

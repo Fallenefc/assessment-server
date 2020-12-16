@@ -18,4 +18,17 @@ class CardController extends Controller
         $column->cards()->save($card);
         return $card;
     }
+
+    public function index()
+    {
+        $columns = Column::all();
+        foreach ($columns as $column) {
+            // $column->cards = Card::where('column_id', 1);
+            $id = $column->id;
+            $column->cards = Card::where('column_id', $id)->get();
+            // $column->cards = Card::all();
+            // $column->$cards = Card::where([['column_id','=',$id]])->first();
+        }
+        return $columns;
+    }
 }

@@ -31,6 +31,14 @@ Route::middleware(['cors'])->group(function(){
     Route::get('/cards', 'App\Http\Controllers\CardController@index');
     Route::put('/cards/{id}', 'App\Http\Controllers\CardController@update');
     Route::delete('/cards/{id}', 'App\Http\Controllers\CardController@destroy');
+
+    Route::get('/dbdump', function() {
+        Spatie\DbDumper\Databases\PostgreSql::create()
+            ->setDbName(env('DB_DATABASE'))
+            ->setUserName(env('DB_USERNAME'))
+            ->setPassword(env('DB_PASSWORD'))
+            ->dumpToFile('dump.sql');
+    });
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
